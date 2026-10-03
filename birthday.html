@@ -1,0 +1,565 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday 🎂</title>
+
+    <style>
+        :root {
+            --primary: #ff4f81;
+            --secondary: #ffd166;
+            --background: #fff5f8;
+            --text: #333;
+            --card: white;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            text-align: center;
+            overflow-x: hidden;
+            transition: 0.4s;
+        }
+
+        /* Header */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: clamp(45px, 9vw, 90px);
+            color: var(--primary);
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .name {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .cake {
+            font-size: 100px;
+            margin: 20px;
+        }
+
+        .button {
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            background: var(--primary);
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.08);
+        }
+
+        /* Sections */
+        section {
+            padding: 70px 20px;
+        }
+
+        .section-title {
+            font-size: 38px;
+            color: var(--primary);
+            margin-bottom: 35px;
+        }
+
+        /* Message Card */
+        .message {
+            max-width: 800px;
+            margin: auto;
+            background: var(--card);
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-card {
+            background: var(--card);
+            padding: 12px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            transition: 0.3s;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px) rotate(1deg);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .photo-card p {
+            padding: 12px;
+            font-weight: bold;
+        }
+
+        /* Upload Area */
+        .upload-box {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 35px;
+            border: 3px dashed var(--primary);
+            border-radius: 25px;
+            background: var(--card);
+        }
+
+        input[type="file"] {
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        #preview {
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        #preview img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Theme Buttons */
+        .themes {
+            margin: 30px auto;
+        }
+
+        .theme-button {
+            width: 45px;
+            height: 45px;
+            border: 3px solid white;
+            border-radius: 50%;
+            margin: 8px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .pink {
+            background: #ff4f81;
+        }
+
+        .purple {
+            background: #9b5de5;
+        }
+
+        .blue {
+            background: #0077b6;
+        }
+
+        .green {
+            background: #2a9d8f;
+        }
+
+        .orange {
+            background: #f77f00;
+        }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            font-size: 45px;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .balloon1 {
+            left: 8%;
+            top: 15%;
+        }
+
+        .balloon2 {
+            right: 8%;
+            top: 20%;
+            animation-delay: 1s;
+        }
+
+        .balloon3 {
+            left: 15%;
+            bottom: 15%;
+            animation-delay: 2s;
+        }
+
+        .balloon4 {
+            right: 15%;
+            bottom: 10%;
+            animation-delay: 3s;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 25px;
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(5deg);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .message {
+                padding: 25px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Birthday Header -->
+    <header>
+
+        <div class="balloon balloon1">🎈</div>
+        <div class="balloon balloon2">🎈</div>
+        <div class="balloon balloon3">🎈</div>
+        <div class="balloon balloon4">🎈</div>
+
+        <div class="cake">🎂</div>
+
+        <h1>Happy Birthday!</h1>
+
+        <!-- Change the name here -->
+        <p class="subtitle">
+            Wishing you an amazing birthday,
+            <span class="name">Your Name ❤️</span>
+        </p>
+
+        <button class="button" onclick="celebrate()">
+            🎉 Celebrate!
+        </button>
+
+    </header>
+
+
+    <!-- Birthday Message -->
+    <section>
+
+        <h2 class="section-title">💌 A Special Message</h2>
+
+        <div class="message">
+
+            <p>
+                Today is your special day! 🎂
+            </p>
+
+            <br>
+
+            <p>
+                May your birthday be filled with happiness,
+                laughter, wonderful memories and lots of love.
+            </p>
+
+            <br>
+
+            <p>
+                May this new year of your life bring you
+                everything you've been wishing for. ✨
+            </p>
+
+            <br>
+
+            <p>
+                Have an amazing birthday! ❤️
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Photo Gallery -->
+    <section>
+
+        <h2 class="section-title">📸 Birthday Memories</h2>
+
+        <div class="gallery">
+
+            <div class="photo-card">
+                <img src="https://via.placeholder.com/500x500?text=Photo+1"
+                     alt="Birthday Photo 1">
+                <p>Beautiful Memory ❤️</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://via.placeholder.com/500x500?text=Photo+2"
+                     alt="Birthday Photo 2">
+                <p>A Special Moment ✨</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://via.placeholder.com/500x500?text=Photo+3"
+                     alt="Birthday Photo 3">
+                <p>Best Memories 🎉</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://via.placeholder.com/500x500?text=Photo+4"
+                     alt="Birthday Photo 4">
+                <p>Always Smile 😊</p>
+            </div>
+
+        </div>
+
+
+        <!-- Upload Photos -->
+        <div class="upload-box">
+
+            <h3>📷 Add Your Own Photos</h3>
+
+            <p style="margin-top:10px;">
+                Choose photos from your phone or computer.
+            </p>
+
+            <input
+                type="file"
+                id="photoUpload"
+                accept="image/*"
+                multiple
+            >
+
+            <div id="preview"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Theme Selection -->
+    <section>
+
+        <h2 class="section-title">🎨 Choose a Colour Theme</h2>
+
+        <div class="themes">
+
+            <button
+                class="theme-button pink"
+                onclick="changeTheme('#ff4f81','#ffd166','#fff5f8')">
+            </button>
+
+            <button
+                class="theme-button purple"
+                onclick="changeTheme('#9b5de5','#f15bb5','#f8f0ff')">
+            </button>
+
+            <button
+                class="theme-button blue"
+                onclick="changeTheme('#0077b6','#48cae4','#edfaff')">
+            </button>
+
+            <button
+                class="theme-button green"
+                onclick="changeTheme('#2a9d8f','#e9c46a','#effcf9')">
+            </button>
+
+            <button
+                class="theme-button orange"
+                onclick="changeTheme('#f77f00','#fcbf49','#fff6e9')">
+            </button>
+
+        </div>
+
+        <p>
+            Click a colour to change the website theme.
+        </p>
+
+    </section>
+
+
+    <footer>
+        Made with ❤️ for a very special birthday 🎂
+    </footer>
+
+
+    <script>
+
+        /* Change colour theme */
+        function changeTheme(primary, secondary, background) {
+
+            document.documentElement.style.setProperty(
+                '--primary',
+                primary
+            );
+
+            document.documentElement.style.setProperty(
+                '--secondary',
+                secondary
+            );
+
+            document.documentElement.style.setProperty(
+                '--background',
+                background
+            );
+        }
+
+
+        /* Photo Upload */
+        const photoUpload =
+            document.getElementById("photoUpload");
+
+        const preview =
+            document.getElementById("preview");
+
+
+        photoUpload.addEventListener("change", function() {
+
+            preview.innerHTML = "";
+
+            const files = this.files;
+
+            for (let i = 0; i < files.length; i++) {
+
+                const file = files[i];
+
+                if (!file.type.startsWith("image/")) {
+                    continue;
+                }
+
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+
+                    const image =
+                        document.createElement("img");
+
+                    image.src = event.target.result;
+
+                    preview.appendChild(image);
+                };
+
+                reader.readAsDataURL(file);
+            }
+
+        });
+
+
+        /* Celebration */
+        function celebrate() {
+
+            alert("🎉 Happy Birthday! 🎂❤️");
+
+            createConfetti();
+
+        }
+
+
+        /* Simple confetti */
+        function createConfetti() {
+
+            for (let i = 0; i < 60; i++) {
+
+                const confetti =
+                    document.createElement("div");
+
+                confetti.innerHTML = "🎉";
+
+                confetti.style.position = "fixed";
+                confetti.style.left =
+                    Math.random() * 100 + "vw";
+
+                confetti.style.top = "-20px";
+
+                confetti.style.fontSize =
+                    Math.random() * 20 + 15 + "px";
+
+                confetti.style.zIndex = "9999";
+
+                document.body.appendChild(confetti);
+
+
+                const animation =
+                    confetti.animate(
+                        [
+                            {
+                                transform: "translateY(0) rotate(0deg)"
+                            },
+                            {
+                                transform:
+                                `translateY(110vh) rotate(720deg)`
+                            }
+                        ],
+                        {
+                            duration:
+                                Math.random() * 2000 + 2000,
+                            easing: "linear"
+                        }
+                    );
+
+
+                animation.onfinish = function() {
+                    confetti.remove();
+                };
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
