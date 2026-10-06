@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome to My World</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background:
+                linear-gradient(
+                    rgba(2, 18, 12, 0.45),
+                    rgba(1, 10, 7, 0.75)
+                ),
+                url("forest.jpg") center center / cover no-repeat;
+
+            color: white;
+        }
+
+        /* Dark cinematic overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(
+                    circle at center,
+                    transparent 15%,
+                    rgba(0, 0, 0, 0.65) 100%
+                );
+            z-index: 1;
+        }
+
+        /* Fog */
+        .fog {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(220, 255, 235, 0.08),
+                    transparent
+                );
+            animation: fogMove 12s ease-in-out infinite alternate;
+            z-index: 2;
+        }
+
+        @keyframes fogMove {
+            from {
+                transform: translateX(-8%);
+                opacity: 0.4;
+            }
+
+            to {
+                transform: translateX(8%);
+                opacity: 0.8;
+            }
+        }
+
+        /* Main content */
+        .welcome {
+            position: relative;
+            z-index: 5;
+
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            padding: 25px;
+        }
+
+        .content {
+            max-width: 750px;
+            padding: 55px 45px;
+
+            background: rgba(5, 25, 18, 0.42);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 25px;
+
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.55);
+
+            animation: appear 1.5s ease forwards;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 14px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            line-height: 1;
+            margin-bottom: 25px;
+
+            text-shadow:
+                0 5px 25px rgba(0, 0, 0, 0.8);
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 1.7;
+            opacity: 0.88;
+            margin-bottom: 40px;
+        }
+
+        .enter-btn {
+            display: inline-block;
+
+            padding: 15px 38px;
+
+            border-radius: 50px;
+
+            background: rgba(255, 255, 255, 0.92);
+            color: #0b281b;
+
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-4px);
+
+            background: white;
+
+            box-shadow:
+                0 10px 30px rgba(255, 255, 255, 0.25);
+        }
+
+        /* Fireflies */
+        .firefly {
+            position: absolute;
+
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: #dfffc2;
+
+            box-shadow:
+                0 0 10px #dfffc2,
+                0 0 20px #a8ff8a;
+
+            animation: float 5s infinite ease-in-out;
+
+            z-index: 3;
+        }
+
+        .f1 {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .f2 {
+            top: 65%;
+            left: 25%;
+            animation-delay: 1s;
+        }
+
+        .f3 {
+            top: 30%;
+            right: 18%;
+            animation-delay: 2s;
+        }
+
+        .f4 {
+            top: 72%;
+            right: 25%;
+            animation-delay: 3s;
+        }
+
+        .f5 {
+            top: 45%;
+            left: 8%;
+            animation-delay: 1.5s;
+        }
+
+        .f6 {
+            top: 18%;
+            right: 35%;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: translateY(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(-25px);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            .content {
+                padding: 40px 25px;
+            }
+
+            .subtitle {
+                font-size: 11px;
+                letter-spacing: 4px;
+            }
+
+            .description {
+                font-size: 15px;
+            }
+
+            .enter-btn {
+                padding: 14px 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="fog"></div>
+
+    <!-- Fireflies -->
+    <div class="firefly f1"></div>
+    <div class="firefly f2"></div>
+    <div class="firefly f3"></div>
+    <div class="firefly f4"></div>
+    <div class="firefly f5"></div>
+    <div class="firefly f6"></div>
+
+    <main class="welcome">
+
+        <section class="content">
+
+            <div class="subtitle">
+                Welcome
+            </div>
+
+            <h1>
+                My World
+            </h1>
+
+            <p class="description">
+                Step into a journey through ideas, creativity,
+                technology and everything that inspires me.
+            </p>
+
+            <a href="index.html" class="enter-btn">
+                ENTER PORTFOLIO
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
